@@ -8,6 +8,7 @@ bp = Blueprint('image_routes', __name__)
 def upload_image():
     delete_all_images_from_s3()
     file = request.files['image']
+    print('File from Image Routes: ', file)
     image_url = upload_image_to_s3(file)
     filtered_image_urls = apply_filters(image_url)
     return jsonify({'uploaded_image_url': image_url, 'filtered_images': filtered_image_urls})
