@@ -7,7 +7,7 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://musical-lokum-0e48e8.netlify.app"]}})
+    CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://musical-lokum-0e48e8.netlify.app"], "methods": ["GET", "POST", "PUT", "DELETE"]}})
 
     # Register blueprints
     app.register_blueprint(main.bp)
