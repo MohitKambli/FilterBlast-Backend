@@ -4,9 +4,6 @@ from PIL import Image
 import boto3
 import io
 import pilgram
-import os
-from datetime import datetime
-from astrapy import DataAPIClient
 from pymongo import MongoClient
 
 app = Flask(__name__)
