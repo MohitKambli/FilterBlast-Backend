@@ -17,6 +17,10 @@ def upload_image_to_s3(file):
     s3.upload_fileobj(file, bucket_name, file.filename)
     return f"https://{bucket_name}.s3.amazonaws.com/{file.filename}"
 
+def upload_filtered_image_to_s3(output_image, filtered_image_filename):
+    s3.upload_fileobj(output_image, bucket_name, filtered_image_filename)
+    return f"https://{bucket_name}.s3.amazonaws.com/{filtered_image_filename}"
+
 def delete_all_images_from_s3():
     response = s3.list_objects_v2(Bucket=bucket_name)
     if 'Contents' in response:
