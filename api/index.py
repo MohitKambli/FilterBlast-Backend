@@ -5,6 +5,7 @@ import boto3
 import io
 import pilgram
 from pymongo import MongoClient
+import datetime
 
 app = Flask(__name__)
 CORS(app, origins="http://localhost:3000")
@@ -115,15 +116,14 @@ def log_download():
     # Get data from the request (user_name and image_name)
     user_name = request.json.get('userName')
     image_name = request.json.get('imageName')
-    #timestamp = datetime.datetime.now()
+    timestamp = datetime.datetime.now()
 
     # Prepare the data to be inserted
     download_log = {
         "user_name": user_name,
-        "image_name": image_name
+        "image_name": image_name,
+        "timestamp": timestamp
     }
-
-    print("Hello World", download_log)
 
     try:
         # Insert data into MongoDB collection
