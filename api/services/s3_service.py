@@ -13,6 +13,7 @@ s3 = boto3.client(
 bucket_name = Config.AWS_S3_BUCKET_NAME
 
 def upload_image_to_s3(file):
+    print("File: ", file)
     s3.upload_fileobj(file, bucket_name, file.name)
     return f"https://{bucket_name}.s3.amazonaws.com/{file.name}"
 
