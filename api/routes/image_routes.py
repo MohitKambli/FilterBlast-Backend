@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, send_file
 from ..services.s3_service import upload_image_to_s3, delete_all_images_from_s3, get_image_from_s3
-from ..services.filter_service import apply_filters
+from ..services.filter_service import apply_filters, apply_filter_helper
 
 bp = Blueprint('image_routes', __name__)
 
@@ -8,7 +8,6 @@ bp = Blueprint('image_routes', __name__)
 def upload_image():
     delete_all_images_from_s3()
     file = request.files['image']
-    print('File from Image Routes: ', file)
     image_url = upload_image_to_s3(file)
     filtered_image_urls = apply_filters(image_url)
     return jsonify({'uploaded_image_url': image_url, 'filtered_images': filtered_image_urls})
@@ -18,7 +17,8 @@ def process_and_fetch():
     data = request.json
     image_url = data['uploaded_image_url']
     selected_filter_index = data['selected_filter_index']
-    filtered_image_url = apply_filters(image_url, index=selected_filter_index)
+    selected_filter = ['hudson', 'inkwell', 'kelvin', 'lark', 'lofi', 'moon', 'perpetua', 'toaster'][selected_filter_index]
+    filtered_image_url = apply_filter_helper(image_url, selected_filter)
     return jsonify({'filtered_image_url': filtered_image_url})
 
 @bp.route('/download_image', methods=['GET'])
