@@ -1,28 +1,84 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fflask3&demo-title=Flask%203%20%2B%20Vercel&demo-description=Use%20Flask%203%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fflask3-python-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994156/random/flask.png)
+# FilterBlast-Backend
 
-# Flask + Vercel
+Welcome to FilterBlast-Backend! 🎨 This repository powers the backend of FilterBlast, an innovative image filtering web application that allows users to upload images, apply trendy filters, and download the filtered images. Built with a modern tech stack, FilterBlast-Backend ensures a seamless, scalable, and efficient image processing experience using cloud storage, serverless technology, and an API-driven architecture.
 
-This example shows how to use Flask 3 on Vercel with Serverless Functions using the [Python Runtime](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python).
+## 🌟 Features
 
-## Demo
+***Dynamic Image Upload and Filtering***: Users can upload images, which are then stored securely in Amazon S3. Our backend processes the images with popular filters like Hudson, Inkwell, Kelvin, and more, giving each photo a unique aesthetic transformation.
 
-https://flask-python-template.vercel.app/
+***Efficient AWS Integration***: All image files are stored in AWS S3, ensuring reliable and scalable storage. The backend handles uploading, downloading, and filter transformations with ease.
 
-## How it Works
+***Versatile Filter Options***: Our application leverages the Pilgram library to apply popular Instagram-style filters, allowing users to select from a range of visually appealing options.
 
-This example uses the Web Server Gateway Interface (WSGI) with Flask to enable handling requests on Vercel with Serverless Functions.
+***Real-Time Download Logging***: Each download is logged with user information, timestamp, and the specific filter applied. The logs are stored in MongoDB, giving insights into usage patterns and providing a record of user interactions.
 
-## Running Locally
+***Cross-Origin Resource Sharing (CORS)***: Configured to allow secure communication with the React frontend, enabling seamless interactions from various client applications.
 
-```bash
-npm i -g vercel
-vercel dev
+## 🚀 Tech Stack
+
+***Flask***: Powers the API and application logic, managing routes for uploading, filtering, and downloading images.
+
+***MongoDB Atlas***: Used for logging download activity, making it easy to store and retrieve data for analytics and user behavior insights.
+
+***AWS S3***: Serves as our primary storage for original and filtered images, ensuring high availability and scalability.
+
+***Pilgram Library***: Applies Instagram-like filters, giving users the ability to stylize images in various ways.
+
+***Python Imaging Library (PIL/Pillow)***: Handles image processing tasks such as opening, transforming, and saving image files.
+
+***Vercel***: Deploys the backend in a serverless, scalable environment with fast performance and low maintenance.
+
+## 🔥 Key Endpoints
+
+***GET /***: Returns a "Hello, World!" message to verify the server is running.
+
+***POST /upload_image***: Receives an image from the client, stores it in S3, applies a range of filters, and returns URLs of the filtered images.
+
+***POST /process_and_fetch***: Applies a selected filter to the uploaded image and returns the filtered image URL.
+
+***GET /download_image***: Downloads a specific image from S3 for the user.
+
+***POST /log_download***: Logs the download activity with user information and timestamp in MongoDB.
+
+## 📑 Getting Started
+
+To run FilterBlast-Backend locally:
+Clone the repository:
+```
+git clone https://github.com/your-username/FilterBlast-Backend.git
+cd FilterBlast-Backend
 ```
 
-Your Flask application is now available at `http://localhost:3000`.
+Install dependencies:
+```
+pip install -r requirements.txt
+```
 
-## One-Click Deploy
+Set up environment variables: 
+Create a .env file in the root directory and add your configuration:
+```
+MONGO_URI=your_mongodb_uri
+MONGO_DB_NAME=your_database_name
+MONGO_COLLECTION_NAME=your_collection_name
+AWS_REGION=your_aws_region
+AWS_ACCESS_KEY_ID=your_aws_access_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret_key
+AWS_S3_BUCKET_NAME=your_s3_bucket_name
+```
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+Run the application:
+```
+python -m api.index
+```
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fflask3&demo-title=Flask%203%20%2B%20Vercel&demo-description=Use%20Flask%203%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fflask3-python-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994156/random/flask.png)
+## Deploy on Vercel:
+
+Simply push your repository to GitHub and connect it to Vercel. Vercel will automatically deploy the application based on the vercel.json configuration.
+
+## 💡 Inspiration
+
+FilterBlast was created to give users a powerful, flexible way to style their photos. With our easy-to-use interface and fast backend processing, anyone can add flair to their images in seconds, making it ideal for photographers, social media enthusiasts, and anyone looking to give their pictures a personal touch.
+
+
+
+
