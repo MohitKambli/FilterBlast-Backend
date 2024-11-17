@@ -29,7 +29,7 @@ db = client.get_database('FilterBlastDB')  # Specify the database name
 filterblast_collection = db.get_collection('filterblast_collection')  # Specify the collection name
 
 # Initialize AWS S3 client
-s3 = boto3.client('s3', region_name='us-east-1', aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'), aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY'))
+s3 = boto3.client('s3', region_name='us-east-1', aws_access_key_id='AKIA6ODU2UVAROXT5ZEE', aws_secret_access_key='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')
 bucket_name = 'filter-blast-bucket'
 
 @app.route('/upload_image', methods=['POST'])
