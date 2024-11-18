@@ -26,7 +26,7 @@ def delete_all_images_from_s3():
     if 'Contents' in response:
         keys = [{'Key': obj['Key']} for obj in response['Contents']]
         s3.delete_objects(Bucket=bucket_name, Delete={'Objects': keys})
-        redis_client.flushdb()
+    redis_client.flushdb()
 
 def get_image_from_s3(image_url):
     # # Create a cache key based on the image URL
