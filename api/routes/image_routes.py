@@ -6,7 +6,7 @@ bp = Blueprint('image_routes', __name__)
 
 @bp.route('/upload_image', methods=['POST'])
 def upload_image():
-    delete_all_images_from_s3()
+    #delete_all_images_from_s3()
     file = request.files['image']
     image_url = upload_image_to_s3(file)
     filtered_image_urls = apply_filters(image_url)

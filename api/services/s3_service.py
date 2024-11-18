@@ -35,7 +35,6 @@ def get_image_from_s3(image_url):
     cached_image_data = redis_client.get(cache_key)
     if cached_image_data:
         # Return the cached image data as a BytesIO stream
-        print('Returning from cache')
         return io.BytesIO(cached_image_data)
 
     # If the image is not cached, retrieve it from S3

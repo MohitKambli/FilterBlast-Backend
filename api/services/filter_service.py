@@ -20,7 +20,6 @@ def apply_filter_helper(image_url, filter_type):
     # Check if the filtered image URL is already in the cache
     cached_url = redis_client.get(cache_key)
     if cached_url:
-        print('Returning from cache')
         return cached_url.decode('utf-8')  # Return the cached URL if found
 
     image_data = get_image_from_s3(image_url)
