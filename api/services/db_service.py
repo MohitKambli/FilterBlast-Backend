@@ -15,6 +15,7 @@ def log_download_entry(user_name, image_name):
     try:
         #collection.insert_one(download_log)
         # Insert query with parameterized values
+        print('Cursor: ', cur)
         cur.execute(
             '''
             INSERT INTO logs (user_name, image_name, timestamp)
@@ -22,6 +23,7 @@ def log_download_entry(user_name, image_name):
             ''',
             (user_name, image_name, datetime.datetime.now())
         )
+        print("Hello, I am here!")
         # Commit the transaction
         conn.commit()
         return True, "Download logged successfully!"
