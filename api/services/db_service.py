@@ -39,7 +39,6 @@ def log_download_entry(user_name, image_name):
             ''',
             (user_name, image_name, datetime.datetime.now())
         )
-        print("Hello, I am here!")
         # Commit the transaction
         conn.commit()
         return True, "Download logged successfully!"
