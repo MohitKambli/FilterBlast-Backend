@@ -4,7 +4,7 @@ from ..config import Config
 
 # Initialize the Redis client with your configuration
 redis_client = redis.Redis(
-    host=Config.REDIS_HOST,
-    port=Config.REDIS_PORT,
-    password=Config.REDIS_PASSWORD
+    host='redis-12367.c281.us-east-1-2.ec2.redns.redis-cloud.com',
+    port=12367,
+    password='cniChB2L7FwQ0zSchvzixuXZorJQaZmM'
 )
